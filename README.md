@@ -1,2 +1,2 @@
-# mini_project_robot_electronics
+# Mini Project Robot Electronics
 Smart Battery Charging and Monitoring System
