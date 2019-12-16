@@ -1,0 +1,11 @@
+WORKFLOW_OPERATION simulation,dialog;
+
+DEFINE_MEMORY_TYPE xadc_and_bram_blk_mem_gen_0_8K_3_MEM_DEVICE [0x00002000] 32;
+
+ADDRESS_MAP xadc_and_bram_processing_system7_0 ARM 100 xadc_and_bram/processing_system7_0
+   ADDRESS_SPACE xadc_and_bram_blk_mem_gen_0_8K_3_ADDR_SPACE xadc_and_bram_blk_mem_gen_0_8K_3_MEM_DEVICE  [0x40000000:0x40001FFF] xadc_and_bram/axi_bram_ctrl_0
+     BUS_BLOCK
+      xadc_and_bram_blk_mem_gen_0_8K_3_BUS_BLK [31:0] INPUT = "xadc_pl2ps_blk_mem_gen_0_0.mem";
+     END_BUS_BLOCK;
+   END_ADDRESS_SPACE;
+END_ADDRESS_MAP;

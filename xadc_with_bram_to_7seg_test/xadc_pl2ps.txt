@@ -1,0 +1,4 @@
+WIZARD  XADC-P 	XADC-N	EX PORT
+
+Vaux1 	E17 	D18 	A0
+Vaux9 	E18 	E19 	A1

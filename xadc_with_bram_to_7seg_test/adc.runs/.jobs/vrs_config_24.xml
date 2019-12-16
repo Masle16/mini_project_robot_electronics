@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="xadc_pl2ps_xbar_0_synth_1" LaunchDir="C:/Users/mikke/OneDrive/Skrivebord/xadc_with_bram/adc.runs/xadc_pl2ps_xbar_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="xadc_pl2ps_blk_mem_gen_0_0_synth_1" LaunchDir="C:/Users/mikke/OneDrive/Skrivebord/xadc_with_bram/adc.runs/xadc_pl2ps_blk_mem_gen_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="xadc_pl2ps_axi_bram_ctrl_0_0_synth_1" LaunchDir="C:/Users/mikke/OneDrive/Skrivebord/xadc_with_bram/adc.runs/xadc_pl2ps_axi_bram_ctrl_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="xadc_pl2ps_auto_pc_0_synth_1" LaunchDir="C:/Users/mikke/OneDrive/Skrivebord/xadc_with_bram/adc.runs/xadc_pl2ps_auto_pc_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="xadc_pl2ps_auto_pc_1_synth_1" LaunchDir="C:/Users/mikke/OneDrive/Skrivebord/xadc_with_bram/adc.runs/xadc_pl2ps_auto_pc_1_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="xadc_pl2ps_msb_31_0_to_3_0_0_0_synth_1" LaunchDir="C:/Users/mikke/OneDrive/Skrivebord/xadc_with_bram/adc.runs/xadc_pl2ps_msb_31_0_to_3_0_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="xadc_pl2ps_seg_7_driver_0_1_synth_1" LaunchDir="C:/Users/mikke/OneDrive/Skrivebord/xadc_with_bram/adc.runs/xadc_pl2ps_seg_7_driver_0_1_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="synth_1" LaunchDir="C:/Users/mikke/OneDrive/Skrivebord/xadc_with_bram/adc.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="xadc_pl2ps_xbar_0_synth_1"/>
+		<Parent Id="xadc_pl2ps_blk_mem_gen_0_0_synth_1"/>
+		<Parent Id="xadc_pl2ps_axi_bram_ctrl_0_0_synth_1"/>
+		<Parent Id="xadc_pl2ps_auto_pc_0_synth_1"/>
+		<Parent Id="xadc_pl2ps_auto_pc_1_synth_1"/>
+		<Parent Id="xadc_pl2ps_msb_31_0_to_3_0_0_0_synth_1"/>
+		<Parent Id="xadc_pl2ps_seg_7_driver_0_1_synth_1"/>
+	</Run>
+	<Run Id="impl_1" LaunchDir="C:/Users/mikke/OneDrive/Skrivebord/xadc_with_bram/adc.runs/impl_1" FlowId="Vivado_Implementation" FromStepId="init_design" ToStepId="write_bitstream">
+		<Parent Id="synth_1"/>
+		<Parent Id="xadc_pl2ps_xbar_0_synth_1"/>
+		<Parent Id="xadc_pl2ps_blk_mem_gen_0_0_synth_1"/>
+		<Parent Id="xadc_pl2ps_axi_bram_ctrl_0_0_synth_1"/>
+		<Parent Id="xadc_pl2ps_auto_pc_0_synth_1"/>
+		<Parent Id="xadc_pl2ps_auto_pc_1_synth_1"/>
+		<Parent Id="xadc_pl2ps_msb_31_0_to_3_0_0_0_synth_1"/>
+		<Parent Id="xadc_pl2ps_seg_7_driver_0_1_synth_1"/>
+	</Run>
+	<Parameters>
+		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
+	</Parameters>
+</Runs>
+

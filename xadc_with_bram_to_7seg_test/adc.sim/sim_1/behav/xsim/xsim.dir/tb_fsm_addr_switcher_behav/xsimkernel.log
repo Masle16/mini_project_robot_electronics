@@ -1,0 +1,7 @@
+Running: xsim.dir/tb_fsm_addr_switcher_behav/xsimk.exe -simmode gui -wdb tb_fsm_addr_switcher_behav.wdb -simrunnum 0 -socket 52517
+Design successfully loaded
+Design Loading Memory Usage: 5788 KB (Peak: 5788 KB)
+Design Loading CPU Usage: 15 ms
+Simulation completed
+Simulation Memory Usage: 6392 KB (Peak: 6392 KB)
+Simulation CPU Usage: 46 ms

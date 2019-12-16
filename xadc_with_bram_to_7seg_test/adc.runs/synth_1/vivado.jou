@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Thu Dec 12 15:31:45 2019
+# Process ID: 22212
+# Current directory: C:/Users/mikke/OneDrive/Skrivebord/xadc_with_bram-workpls/adc.runs/synth_1
+# Command line: vivado.exe -log xadc_pl2ps_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source xadc_pl2ps_wrapper.tcl
+# Log file: C:/Users/mikke/OneDrive/Skrivebord/xadc_with_bram-workpls/adc.runs/synth_1/xadc_pl2ps_wrapper.vds
+# Journal file: C:/Users/mikke/OneDrive/Skrivebord/xadc_with_bram-workpls/adc.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source xadc_pl2ps_wrapper.tcl -notrace
