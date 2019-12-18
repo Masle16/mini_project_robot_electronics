@@ -9175,3 +9175,9 @@ con
 09:44:44 INFO  : Successfully done setting SDK workspace  
 09:44:44 INFO  : Processing command line option -hwspec C:/Users/An-ck/Desktop/xadc_with_bram_with_one_addr/adc.sdk/xadc_pl2ps_wrapper.hdf.
 09:44:44 INFO  : Checking for hwspec changes in the project xadc_pl2ps_wrapper_hw_platform_3.
+10:48:36 INFO  : Registering command handlers for SDK TCF services
+10:48:36 INFO  : Launching XSCT server: xsct.bat -interactive C:\Users\An-ck\Desktop\mini_project_robot_electronics\final_product\xadc_with_bram_with_one_addr\adc.sdk\temp_xsdb_launch_script.tcl
+10:48:39 INFO  : XSCT server has started successfully.
+10:48:40 INFO  : Successfully done setting XSCT server connection channel  
+10:48:40 INFO  : Processing command line option -hwspec C:/Users/An-ck/Desktop/mini_project_robot_electronics/final_product/xadc_with_bram_with_one_addr/adc.sdk/xadc_pl2ps_wrapper.hdf.
+10:48:40 INFO  : Successfully done setting SDK workspace  
