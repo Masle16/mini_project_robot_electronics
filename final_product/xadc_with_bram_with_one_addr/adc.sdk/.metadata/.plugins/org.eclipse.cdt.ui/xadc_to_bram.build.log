@@ -1,0 +1,27 @@
+09:52:49 **** Auto Build of configuration Debug for project xadc_to_bram ****
+make pre-build main-build 
+a9-linaro-pre-build-step
+' '
+'Building file: ../src/helloworld.c'
+'Invoking: ARM v7 gcc compiler'
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../xadc_to_bram_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+../src/helloworld.c: In function 'main':
+../src/helloworld.c:164:14: warning: implicit declaration of function 'CombineForBram' [-Wimplicit-function-declaration]
+   MYMEM_u(0)=CombineForBram(led, pwm); // using memory addr 0
+              ^~~~~~~~~~~~~~
+'Finished building: ../src/helloworld.c'
+' '
+'Building target: xadc_to_bram.elf'
+'Invoking: ARM v7 gcc linker'
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L../../xadc_to_bram_bsp/ps7_cortexa9_0/lib -o "xadc_to_bram.elf"  ./src/core_portme.o ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+'Finished building target: xadc_to_bram.elf'
+' '
+'Invoking: ARM v7 Print Size'
+arm-none-eabi-size xadc_to_bram.elf  |tee "xadc_to_bram.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  97008	   2672	  23440	 123120	  1e0f0	xadc_to_bram.elf
+'Finished building: xadc_to_bram.elf.size'
+' '
+
+09:52:51 Build Finished (took 1s.391ms)
+

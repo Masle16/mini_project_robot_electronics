@@ -1,0 +1,41 @@
+{
+   "ExpandedHierarchyInLayout":"",
+   "commentid":"",
+   "guistr":"# # String gsaved with Nlview 7.0.19  2019-03-26 bk=1.5019 VDI=41 GEI=35 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -lvl 3 -x 810 -y 100 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 3 -x 810 -y 60 -defaultsOSRD
+preplace port Vaux1 -pg 1 -lvl 0 -x 0 -y 190 -defaultsOSRD
+preplace port Vaux9 -pg 1 -lvl 0 -x 0 -y 130 -defaultsOSRD
+preplace port BRAM_PORTB_0 -pg 1 -lvl 0 -x 0 -y 70 -defaultsOSRD
+preplace port PWM_0 -pg 1 -lvl 3 -x 810 -y 541 -defaultsOSRD
+preplace port LED_0 -pg 1 -lvl 3 -x 810 -y 340 -defaultsOSRD
+preplace inst xadc_and_bram -pg 1 -lvl 1 -x 260 -y 130 -defaultsOSRD -resize 428 230
+preplace inst PS_info_3_bits_0 -pg 1 -lvl 2 -x 660 -y 330 -defaultsOSRD
+preplace inst PWM_mod -pg 1 -lvl 2 -x 660 -y 541 -defaultsOSRD -resize 167 154
+preplace inst FrequencyConstant -pg 1 -lvl 1 -x 260 -y 660 -defaultsOSRD
+preplace inst LogicLow -pg 1 -lvl 1 -x 260 -y 460 -defaultsOSRD
+preplace inst LogicHigh -pg 1 -lvl 1 -x 260 -y 560 -defaultsOSRD
+preplace inst pwm_control_0 -pg 1 -lvl 1 -x 260 -y 330 -defaultsOSRD
+preplace netloc xadc_and_bram_doutb_0 1 1 1 530 150n
+preplace netloc PWM_mod_OutBit_0 1 2 1 NJ 541
+preplace netloc clk_0_1 1 0 2 20 400 520
+preplace netloc FrequencyConstant_dout 1 1 1 510J 579n
+preplace netloc LogicHigh_dout 1 1 1 NJ 560
+preplace netloc LogicLow_dout 1 1 1 500J 460n
+preplace netloc PS_info_3_bits_0_pwm_inc 1 0 3 20 260 NJ 260 790
+preplace netloc pwm_control_0_dutyCycleVal 1 1 1 510 330n
+preplace netloc PS_info_3_bits_0_battery_lvl 1 2 1 NJ 340
+preplace netloc Vaux1_1 1 0 1 NJ 190
+preplace netloc BRAM_PORTB_0_1 1 0 1 NJ 70
+preplace netloc xadc_and_bram_FIXED_IO 1 1 2 NJ 60 NJ
+preplace netloc Vaux9_1 1 0 1 NJ 130
+preplace netloc xadc_and_bram_DDR 1 1 2 NJ 100 NJ
+levelinfo -pg 1 0 260 660 810
+pagesize -pg 1 -db -bbox -sgen -160 0 920 720
+"
+}
+{
+   "da_axi4_cnt":"2",
+   "da_ps7_cnt":"1"
+}

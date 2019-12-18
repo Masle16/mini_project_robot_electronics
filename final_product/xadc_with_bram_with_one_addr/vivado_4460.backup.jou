@@ -1,0 +1,113 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Sun Dec 15 12:03:56 2019
+# Process ID: 4460
+# Current directory: C:/Users/An-ck/Desktop/xadc_with_bram_with_one_addr
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent7768 C:\Users\An-ck\Desktop\xadc_with_bram_with_one_addr\adc.xpr
+# Log file: C:/Users/An-ck/Desktop/xadc_with_bram_with_one_addr/vivado.log
+# Journal file: C:/Users/An-ck/Desktop/xadc_with_bram_with_one_addr\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/An-ck/Desktop/xadc_with_bram_with_one_addr/adc.xpr
+update_compile_order -fileset sources_1
+open_bd_design {C:/Users/An-ck/Desktop/xadc_with_bram_with_one_addr/adc.srcs/sources_1/bd/xadc_pl2ps/xadc_pl2ps.bd}
+create_bd_cell -type hier PWM_mod
+set_property screensize {167 154} [get_bd_cells PWM_mod]
+set_property location {1 310 -158} [get_bd_cells PWM_mod]
+import_files -norecurse {{C:/Users/An-ck/Dropbox/UNI/MSc/Robot Electronics/Project/sources/comparator.vhd} {C:/Users/An-ck/Dropbox/UNI/MSc/Robot Electronics/Project/sources/counter.vhd} {C:/Users/An-ck/Dropbox/UNI/MSc/Robot Electronics/Project/sources/OR.vhd}}
+update_compile_order -fileset sources_1
+create_bd_cell -type module -reference OR_bit PWM_mod/OR_bit_0
+create_bd_cell -type module -reference comparator_N_bit PWM_mod/comparator_N_bit_0
+create_bd_cell -type module -reference counter_N_bit PWM_mod/counter_N_bit_0
+copy_bd_objs PWM_mod  [get_bd_cells {PWM_mod/comparator_N_bit_0}]
+connect_bd_net [get_bd_pins PWM_mod/counter_N_bit_0/count] [get_bd_pins PWM_mod/comparator_N_bit_1/count]
+connect_bd_net [get_bd_pins PWM_mod/comparator_N_bit_0/count] [get_bd_pins PWM_mod/counter_N_bit_0/count]
+connect_bd_net [get_bd_pins PWM_mod/comparator_N_bit_1/OutBit] [get_bd_pins PWM_mod/OR_bit_0/A]
+startgroup
+make_bd_pins_external  [get_bd_pins PWM_mod/comparator_N_bit_0/OutBit]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins PWM_mod/OR_bit_0/B]
+endgroup
+set_property name rst_0 [get_bd_pins PWM_mod/B_0]
+startgroup
+make_bd_pins_external  [get_bd_pins PWM_mod/comparator_N_bit_0/threshold]
+endgroup
+delete_bd_objs [get_bd_nets PWM_mod/threshold_0_1]
+delete_bd_objs [get_bd_nets threshold_0_1] [get_bd_pins PWM_mod/threshold_0]
+startgroup
+set_property -dict [list CONFIG.N {13}] [get_bd_cells PWM_mod/comparator_N_bit_0]
+endgroup
+startgroup
+set_property -dict [list CONFIG.N {13}] [get_bd_cells PWM_mod/comparator_N_bit_1]
+endgroup
+startgroup
+set_property -dict [list CONFIG.N {13}] [get_bd_cells PWM_mod/counter_N_bit_0]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins PWM_mod/comparator_N_bit_0/threshold]
+endgroup
+set_property name DutyCycle [get_bd_pins PWM_mod/threshold_1]
+set_property name PWM_0 [get_bd_pins PWM_mod/OutBit_0]
+startgroup
+make_bd_pins_external  [get_bd_pins PWM_mod/counter_N_bit_0/clk]
+endgroup
+connect_bd_net [get_bd_pins PWM_mod/counter_N_bit_0/rst] [get_bd_pins PWM_mod/OR_bit_0/OutBit]
+startgroup
+make_bd_pins_external  [get_bd_pins PWM_mod/counter_N_bit_0/en]
+endgroup
+startgroup
+make_bd_pins_external  [get_bd_pins PWM_mod/comparator_N_bit_1/threshold]
+endgroup
+set_property name FrequencyConstant [get_bd_pins PWM_mod/threshold_2]
+regenerate_bd_layout -hierarchy [get_bd_cells PWM_mod]
+save_bd_design
+update_compile_order -fileset sources_1
+regenerate_bd_layout
+delete_bd_objs [get_bd_ports threshold_0]
+set_property name PWM_0 [get_bd_ports OutBit_0]
+delete_bd_objs [get_bd_nets threshold_2_1] [get_bd_ports threshold_2]
+delete_bd_objs [get_bd_nets en_0_1] [get_bd_ports en_0]
+delete_bd_objs [get_bd_nets clk_0_1] [get_bd_ports clk_0]
+delete_bd_objs [get_bd_nets threshold_1_1] [get_bd_ports threshold_1]
+delete_bd_objs [get_bd_nets B_0_1] [get_bd_ports B_0]
+connect_bd_net [get_bd_pins PWM_mod/clk_0] [get_bd_pins xadc_and_bram/processing_system7_0/FCLK_CLK0]
+startgroup
+create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0
+endgroup
+set_property name FrequencyConstant [get_bd_cells xlconstant_0]
+set_property -dict [list CONFIG.CONST_WIDTH {13} CONFIG.CONST_VAL {5000}] [get_bd_cells FrequencyConstant]
+connect_bd_net [get_bd_pins FrequencyConstant/dout] [get_bd_pins PWM_mod/FrequencyConstant]
+copy_bd_objs /  [get_bd_cells {FrequencyConstant}]
+copy_bd_objs /  [get_bd_cells {FrequencyConstant}]
+set_property -dict [list CONFIG.CONST_WIDTH {1} CONFIG.CONST_VAL {1}] [get_bd_cells FrequencyConstant2]
+set_property name LogicHigh [get_bd_cells FrequencyConstant2]
+connect_bd_net [get_bd_pins LogicHigh/dout] [get_bd_pins PWM_mod/en_0]
+set_property name LogicLow [get_bd_cells FrequencyConstant1]
+set_property -dict [list CONFIG.CONST_WIDTH {1} CONFIG.CONST_VAL {0}] [get_bd_cells LogicLow]
+connect_bd_net [get_bd_pins LogicLow/dout] [get_bd_pins PWM_mod/rst_0]
+regenerate_bd_layout
+regenerate_bd_layout
+close [ open C:/Users/An-ck/Desktop/xadc_with_bram_with_one_addr/adc.srcs/sources_1/new/pwm_control.vhd w ]
+add_files C:/Users/An-ck/Desktop/xadc_with_bram_with_one_addr/adc.srcs/sources_1/new/pwm_control.vhd
+update_compile_order -fileset sources_1
+create_bd_cell -type module -reference pwm_control pwm_control_0
+connect_bd_net [get_bd_pins pwm_control_0/clk_inc] [get_bd_pins xadc_and_bram/FCLK_CLK0]
+connect_bd_net [get_bd_pins pwm_control_0/pwm_inc] [get_bd_pins PS_info_3_bits_0/pwm_inc]
+connect_bd_net [get_bd_pins pwm_control_0/dutyCycleVal] [get_bd_pins PWM_mod/DutyCycle]
+regenerate_bd_layout
+startgroup
+make_bd_pins_external  [get_bd_pins PS_info_3_bits_0/battery_lvl]
+endgroup
+set_property name LED_0 [get_bd_ports battery_lvl_0]
+save_bd_design
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+wait_on_run impl_1
+file copy -force C:/Users/An-ck/Desktop/xadc_with_bram_with_one_addr/adc.runs/impl_1/xadc_pl2ps_wrapper.sysdef C:/Users/An-ck/Desktop/xadc_with_bram_with_one_addr/adc.sdk/xadc_pl2ps_wrapper.hdf
+
+launch_sdk -workspace C:/Users/An-ck/Desktop/xadc_with_bram_with_one_addr/adc.sdk -hwspec C:/Users/An-ck/Desktop/xadc_with_bram_with_one_addr/adc.sdk/xadc_pl2ps_wrapper.hdf
+launch_sdk -workspace C:/Users/An-ck/Desktop/xadc_with_bram_with_one_addr/adc.sdk -hwspec C:/Users/An-ck/Desktop/xadc_with_bram_with_one_addr/adc.sdk/xadc_pl2ps_wrapper.hdf

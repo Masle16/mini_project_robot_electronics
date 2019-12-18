@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../adc.srcs/sources_1/new/fsm_addr_switcher.vhd" \
+"../../../../adc.srcs/sim_1/new/tb_fsm_addr_switcher.vhd" \
+
+# Do not sort compile order
+nosort

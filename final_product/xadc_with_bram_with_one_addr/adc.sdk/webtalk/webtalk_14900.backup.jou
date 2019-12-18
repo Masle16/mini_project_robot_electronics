@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# 
+# Start of session at: Thu Dec 12 18:36:18 2019
+# Process ID: 14900
+# Current directory: C:/Users/mikke/OneDrive/Skrivebord/Final_project/xadc_with_bram_with_fsm/adc.sdk/webtalk
+# Command line: wbtcv.exe -mode batch -source sdk_webtalk.tcl
+# Log file: C:/Users/mikke/OneDrive/Skrivebord/Final_project/xadc_with_bram_with_fsm/adc.sdk/webtalk/webtalk.log
+# Journal file: C:/Users/mikke/OneDrive/Skrivebord/Final_project/xadc_with_bram_with_fsm/adc.sdk/webtalk\webtalk.jou
+#-----------------------------------------------------------
+source sdk_webtalk.tcl

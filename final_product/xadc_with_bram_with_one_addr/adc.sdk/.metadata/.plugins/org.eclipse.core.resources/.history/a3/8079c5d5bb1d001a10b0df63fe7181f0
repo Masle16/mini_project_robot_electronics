@@ -1,0 +1,220 @@
+/**
+*
+* @file main.c
+*
+* This file contains a design example using the driver functions
+* of the XADC driver. The example here shows the driver/device in polled mode
+* to check the voltage on ADC 14. This example is highly inspired by Xilinx
+* standard example on how to use the XADC module.
+*
+* @note
+*
+*
+*
+* <pre>
+*
+* MODIFICATION HISTORY:
+*
+* Ver   Who   Date      Changes
+* ----- ----  --------  -----------------------------------------------------
+* 1.00a jcla  31/03/16  First release based on the Xilinx XADC example driver
+*
+* </pre>
+*
+*****************************************************************************/
+
+/***************************** Include Files ********************************/
+#include <stdio.h>
+#include "platform.h"
+#include "xil_printf.h"
+#include "xil_types.h"
+#include "xparameters.h"
+#include "bram.h"
+#include "xadcps.h"
+#include "xstatus.h"
+#include <unistd.h>
+
+
+#include "core_portme.h"
+
+/************************** Constant Definitions ****************************/
+
+/*
+ * The following constants map to the XPAR parameters created in the
+ * xparameters.h file. They are defined here such that a user can easily
+ * change all the needed parameters in one place.
+ */
+#define XADC_DEVICE_ID 		XPAR_XADCPS_0_DEVICE_ID
+
+/**************************** Marco Definitions ******************************/
+
+
+/************************** Function Prototypes *****************************/
+
+static int XAdcPolledPrintfExample(u16 XAdcDeviceId, int *voltage);
+static int XAdcFractionToInt(float FloatNum);
+
+
+/***************** Macros (Inline Functions) Definitions ********************/
+
+#define printf xil_printf /* Small foot-print printf function */
+
+// converting RAW data from external sourse to voltage
+#define XAdcPs_ExternalRawToVoltage(AdcData)\
+	((((float)(AdcData))* (1.0f))/65536.0f)
+
+/************************** Variable Definitions ****************************/
+
+static XAdcPs XAdcInst;      /* XADC driver instance */
+
+/****************************************************************************/
+
+
+int main(void)
+{
+	init_platform();
+
+	//BRAM
+	initMemory();
+	int write_value, prev_write_value = 0;
+
+	//XADC
+	int voltage_reading = 0; // Result is in mV going from 0V = 0 to 1000 = 3.3V
+	int voltage = 0;
+
+	print("Hello XADC!\n");
+
+	/*
+	 * Run the polled example, specify the Device ID that is
+	 * generated in xparameters.h.
+	 */
+	int Status;
+
+
+	CombineForBram(0b0, 0b01);
+	while (1) {
+
+		Status = XAdcPolledPrintfExample(XADC_DEVICE_ID, &voltage_reading);
+		if (Status != XST_SUCCESS) {
+			return XST_FAILURE;
+		}
+		voltage = (voltage_reading*3.3)/1000.0;
+		write_value = voltage;
+
+		//Writes to BRAM
+		/*
+		if (write_value != prev_write_value)
+		{
+			prev_write_value = write_value;
+			MYMEM_u(0)=write_value;				//corresponds to memory address 0 on the FPGA
+			//xil_printf("Voltage value updated successfully.\r\n");
+			printf("\r\n voltage: %6d", voltage);
+		}
+		*/
+		if (voltage != prev_write_value)
+		{
+			prev_write_value=voltage;
+			//MYMEM_u(0)=voltage;
+			printf("\r\n voltage: %6d", voltage);
+		}
+//		MYMEM_u(0)=2;
+//		sleep(2);
+//		MYMEM_u(1)=1;
+
+	}
+
+	cleanup_platform();
+	return XST_SUCCESS;
+}
+
+
+/****************************************************************************/
+/**								Reading voltage
+****************************************************************************/
+int XAdcPolledPrintfExample(u16 XAdcDeviceId, int *voltage)
+{
+	int Status;
+	XAdcPs_Config *ConfigPtr;
+	u32 VccPdroRawData;
+	float VccPintData;
+	XAdcPs *XAdcInstPtr = &XAdcInst;
+
+	//printf("\r\nEntering the XAdc Polled Example. \r\n");
+
+	/*
+	 * Initialize the XAdc driver.
+	 */
+	ConfigPtr = XAdcPs_LookupConfig(XAdcDeviceId);
+	if (ConfigPtr == NULL) {
+		return XST_FAILURE;
+	}
+	XAdcPs_CfgInitialize(XAdcInstPtr, ConfigPtr, ConfigPtr->BaseAddress);
+
+	/*
+	 * Self Test the XADC/ADC device
+	 */
+	Status = XAdcPs_SelfTest(XAdcInstPtr);
+	if (Status != XST_SUCCESS) {
+		return XST_FAILURE;
+	}
+
+	/*
+	 * Read the AD14 input Voltage Data from the
+	 * ADC data registers.
+	 */
+	VccPdroRawData = XAdcPs_GetAdcData(XAdcInstPtr, XADCPS_CH_AUX_MIN+9);
+	VccPintData = XAdcPs_ExternalRawToVoltage(VccPdroRawData);
+
+
+	(*voltage) = XAdcFractionToInt(VccPintData);
+
+	//printf("\r\n.%03d", XAdcFractionToInt(VccPintData));
+
+	//printf("\r\n%0d.%03d", (int)(VccPintData), XAdcFractionToInt(VccPintData));
+
+	//printf("\r\nExiting the XAdc Polled Example. \r\n");
+
+	return XST_SUCCESS;
+}
+
+/****************************************************************************/
+/**				     	Combining data for bram
+****************************************************************************/
+int CombineForBram(int battery_threshold, int pwm_inc)
+{
+	int result = 0b111;
+	result = result & pwm_inc; // sets the two first bits
+	result |= 1 << 2; // set the third bit again
+	//result &= ~(battery_threshold << 2);
+	printf("\r\n%3d", result);
+	return result;
+}
+
+
+/****************************************************************************/
+/*
+*
+* This function converts the fraction part of the given floating point number
+* (after the decimal point)to an integer.
+*
+* @param	FloatNum is the floating point number.
+*
+* @return	Integer number to a precision of 3 digits.
+*
+* @note
+* This function is used in the printing of floating point data to a STDIO device
+* using the xil_printf function. The xil_printf is a very small foot-print
+* printf function and does not support the printing of floating point numbers.
+*
+*****************************************************************************/
+int XAdcFractionToInt(float FloatNum)
+{
+	float Temp;
+
+	Temp = FloatNum;
+	if (FloatNum < 0) {
+		Temp = -(FloatNum);
+	}
+
+	return( ((int)((Temp -(float)((int)Temp)) * (1000.0f))));
+}

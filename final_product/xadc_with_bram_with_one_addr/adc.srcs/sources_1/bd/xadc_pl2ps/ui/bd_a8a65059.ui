@@ -1,0 +1,43 @@
+{
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0.19  2019-03-26 bk=1.5019 VDI=41 GEI=35 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port BRAM_PORTB_0 -pg 1 -lvl 0 -x 0 -y 530 -defaultsOSRD
+preplace port Vaux9 -pg 1 -lvl 0 -x 0 -y 260 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 5 -x 1400 -y 230 -defaultsOSRD
+preplace port Vaux1 -pg 1 -lvl 0 -x 0 -y 280 -defaultsOSRD
+preplace port DDR -pg 1 -lvl 5 -x 1400 -y 210 -defaultsOSRD
+preplace portBus doutb_0 -pg 1 -lvl 5 -x 1400 -y 730 -defaultsOSRD
+preplace inst axi_bram_ctrl_0 -pg 1 -lvl 3 -x 950 -y 430 -defaultsOSRD
+preplace inst xadc_wiz_0 -pg 1 -lvl 4 -x 1250 -y 340 -defaultsOSRD
+preplace inst constant_High -pg 1 -lvl 3 -x 950 -y 690 -defaultsOSRD
+preplace inst blk_mem_gen_0 -pg 1 -lvl 4 -x 1250 -y 590 -defaultsOSRD
+preplace inst constant_Low -pg 1 -lvl 3 -x 950 -y 790 -defaultsOSRD
+preplace inst rst_ps7_0_100M -pg 1 -lvl 1 -x 230 -y 110 -defaultsOSRD
+preplace inst constant3x0_Low -pg 1 -lvl 3 -x 950 -y 890 -defaultsOSRD
+preplace inst ps7_0_axi_periph -pg 1 -lvl 2 -x 630 -y 170 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 1 -x 230 -y 390 -defaultsOSRD
+preplace inst constant31x0_Low1 -pg 1 -lvl 3 -x 950 -y 590 -defaultsOSRD
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 4 30 250 480 420 780 510 1090
+preplace netloc S00_ARESETN_1 1 1 3 440 310 790 520 1120
+preplace netloc constant_High_dout 1 3 1 1090J 630n
+preplace netloc constant_Low_dout 1 3 1 1100J 650n
+preplace netloc constant3x0_Low_dout 1 3 1 1110J 670n
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 2 20 10 430
+preplace netloc rst_ps7_0_100M_interconnect_aresetn 1 1 1 N 130
+preplace netloc constant31x0_Low1_dout 1 3 1 1120 550n
+preplace netloc blk_mem_gen_0_doutb 1 3 2 1120 730 NJ
+preplace netloc BRAM_PORTB_0_1 1 0 4 NJ 530 NJ 530 NJ 530 NJ
+preplace netloc Conn2 1 0 4 NJ 260 470J 320 NJ 320 1120J
+preplace netloc ps7_0_axi_periph_M00_AXI 1 2 2 NJ 160 1120
+preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 3 1 1110 430n
+preplace netloc Conn5 1 1 4 NJ 340 NJ 340 1090J 210 NJ
+preplace netloc Conn3 1 1 4 NJ 360 800J 350 1110J 230 NJ
+preplace netloc ps7_0_axi_periph_M01_AXI 1 2 1 810 180n
+preplace netloc Conn4 1 0 4 NJ 280 450J 330 NJ 330 NJ
+preplace netloc processing_system7_0_M_AXI_GP0 1 1 1 460 90n
+levelinfo -pg 1 0 230 630 950 1250 1400
+pagesize -pg 1 -db -bbox -sgen -170 0 1540 950
+"
+}
+0
