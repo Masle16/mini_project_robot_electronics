@@ -1,0 +1,14 @@
+\documentclass[../report.tex]{subfiles}
+\begin{document}
+
+\section{Conclusion} \label{sec:conclusion}
+Throughout the report, a system that can charge batteries of different voltages was developed. The designed system can monitor the charging progress every $10$'th milliseconds and display the remaining charging time of the battery.
+
+An electrical charging circuit was build which made it possible to charge batteries ranging from $1.5$ [V] to $6$ [V], the charging process was controlled with a PWM signal, while the battery voltage and charging current was monitored.
+
+A controller was designed on the PYNQ Z2 board that adjusts the charge current to be equal to the desired target current set by the user. The controller receives feedback from the electrical circuit via two XADCs and sends input to the electrical circuit via a PWM module. The PWM module was designed to have a frequency of $20$ [kHz]. The designed XADC can measure a voltage from $0$ [V] to $3.3$ [V] with a resolution of $0.806$ [mV]. A protocol was designed to transfer the PWM value and whether the battery level is above $20$ \%, trough PS to PL communication.
+
+The final product\footnote{A demonstration of the final product can be seen in \url{https://youtu.be/0lCbZjbHUG8}} was capable of reliably charging batteries of various types and sizes.
+
+
+\end{document}

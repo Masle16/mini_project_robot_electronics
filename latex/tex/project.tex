@@ -1,0 +1,30 @@
+\documentclass[../report.tex]{subfiles}
+\begin{document}
+
+\section{Project} % Maybe change title
+
+\subsection{Electronic Circuit for Charging of Batteries?} \label{subsec:electronic_circuit}
+
+\subsection{Communication Between the Processing System and the\\Programmable Logic} \label{subsec:ps2pl}
+
+\subsection{Universal Asynchronous Receiver-Transmitter Communication} \label{subsec:uart}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm, semithick]
+        \tikzstyle{every state}=[fill=red,draw=none,text=white]
+        
+        \node[initial,state] (A)                    {$S_0$};
+        \node[state]         (B) [below right of=A] {$S_1$};
+        \node[state]         (C) [below left of=A] {$S_2$};
+        
+        \path   (A) edge[bend left] node {start='1'} (B)
+                (B) edge[bend left] node {} (C)
+                (C) edge[bend left] node {xmtmt='1'} (B)
+                (C) edge[bend left] node {count=3} (A);
+    \end{tikzpicture}
+    \caption{Example of state machine diagram.}
+    \label{fig:sm_example}
+\end{figure}
+
+\end{document}

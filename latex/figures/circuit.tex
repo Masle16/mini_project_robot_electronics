@@ -1,0 +1,49 @@
+\documentclass[../report.tex]{subfiles}
+\begin{document}
+
+
+\begin{figure}[h]
+\begin{center}
+\begin{circuitikz}[scale=0.85]
+    \ctikzset{tripoles/mos style/arrows}
+    
+    
+    \draw (0,0) node[nigfete] (nfet) {};
+    \draw (3, 0.5) node[pigfete] (pfet) {};
+    \draw (0.25,0) node[] {$F_1$};
+    \draw (3.25, 0.5) node[] {$F_2$};
+    %pigfete
+    \draw (-1, -6) node[op amp, rotate=180] (A1) {};
+    \draw (A1)node[]{$A_1$};
+    \draw (6, -6) node[op amp, rotate=180] (A2) {};
+    \draw (A2)node[]{$A_2$};
+
+    \draw (nfet.G) to[R, a=$R_2$] ++(-3.0,0) node[anchor=east]{PWM};
+    \draw (nfet.G) ++(-2.5,0) to[R, l=$R_1$, *-] ++(0,-2.0) to node[ground]{} ++(0,0);
+    \draw (nfet.S) to node[ground]{} ++(0,0);
+    
+    \draw (nfet.D) to[R, l=$R_3$] ++(0, 2) -- ++(-0.5,0) -- ++(4.0 ,0) node[anchor=west]{$V_{CC}$}
+    (pfet.D) to[Do, invert, l=$D_1$] ++(0, -2.0) to node[ground]{} ++(0,0)
+    (pfet.D) to[L, l=$L_1$] ++(2.0 ,0) to[C, l=$C_1$] ++(0, -2.0) to node[ground]{} ++(0,0);
+    \draw (nfet.D) to[R,l=$R_4$,*-] (pfet.G);
+    \draw (pfet.S) -- ++(0,1.5);
+    \draw (pfet.D) ++(2.0 ,0) -- ++(2.0,0) to[Do, l=$D_2$] ++(0, -2.0) -- ++(-1.0,0) -- node[](splitconn){} ++(0, -1.0) to[R, l=$R_7$, *-*] node[](splitbat){} ++(2.0 ,0) to[R, l=$R_8$, -*] ++(0, -2.0) to[R, l=$R_9$] ++(0, -2.0) to node[ground]{} ++(0,0) ++(0, 2.0) --(A2.+); %++(-1.0, 0) node[anchor=east]{$V_{ADC1}$};
+    \draw (splitbat) ++(-0.2, 0) -- ++(2.0 ,0) to[C, l=$Battery$] ++(0, -2.0) to node[ground]{} ++(0,0);
+    \draw (splitconn) ++ (0.2, -0.5)-- ++(-5.0 ,0) to[R, l=$R_5$, -*] ++(0, -2.0) to[R, l=$R_6$] ++(0, -2.0) to node[ground]{} ++(0,0) ++(0, 2.0) -- (A1.+);%node[anchor=east]{$V_{ADC2}$};
+    \draw (A1.out) -- ++(-0.5,0) node[anchor=east]{$V_{ADC1}$};
+    \draw (A1.out) --++(0, -1.5) -- ++(2.8,0) -- (A1.-);
+    
+    \draw (A2.out) -- ++(-0.5,0) node[anchor=east]{$V_{ADC2}$};
+    \draw (A2.out) --++(0, -1.5) -- ++(2.8,0) -- (A2.-);
+
+    
+   
+   
+\end{circuitikz}
+\end{center}
+    \caption{The charging circuit, which can handle various battery voltages, charging currents and monitoring of the charging process.}
+    \label{fig:circuit:battery}
+\end{figure}
+
+
+\end{document}

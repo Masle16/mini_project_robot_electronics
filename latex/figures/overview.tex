@@ -1,0 +1,71 @@
+\begin{tikzpicture}[node distance=3.5cm, auto]
+% Nodes
+\node[block, text width=8em, minimum height=12em, minimum width=8em] at (0, 0) (fpga) {Field Programmable Gate Array};
+\node[block] at (-4, 1) (bram) {Block RAM};
+\node[block] at (-4, -1) (adc) {Analog to digital converter};
+\node[block, minimum height=12em] at (-8, 0) (arm) {Arm Processor};
+\node[block] at (-8, -4) (ter) {Terminal};
+\node[block] at (5, -1) (circuit) {Electronic Circuit};
+\node[block] at (8, -1) (battery) {Battery};
+\node[block] at (5, 1) (led) {LED};
+%\node[block] at (5, 0) (seg1) {Seven segment display};
+% \node[block] at (4, -6) (seg2) {Seven segment display};
+
+% Arrows
+\draw[line] (-7.5, -3.225) -- (-7.5, -2.3) node[pos=0.2, right] {User input};
+\draw[line] (-8.5, -2.3) -- (-8.5, -3.225) node[pos=0.8, left] {};
+\draw[line] (circuit) -- (battery);
+\draw[line] (-6.9, 1) -- (bram);
+\draw[line] (bram) -- (-1.65, 1);
+% \draw[line] (-1.65, -1) -- (adc);
+\draw[line] (adc) -- (-6.9,-1);
+\draw[line] (1.65, -1) -- (circuit) node[pos=0.5, above] {PWM};
+% \draw[line] (circuit) -- (adc) node[pos=0.1, above] {Voltage};
+\draw[] (5, -1.75) -- (5, -3);
+\draw[] (5, -3) -- (-4, -3) node[pos=0.2, below] {Voltage};
+\draw[line] (-4, -3) -- (-4, -1.75);
+\draw[line] (1.65, 1) -- (led);
+%\draw[line] (1.65, 0) -- (seg1);
+
+% rectangles
+\draw[draw=red, dashed] (-9.5, -2.55) rectangle ++(11.5, 5);
+\node[text=red] at (-4, 2.7) {PYNQ-Z2 Board};
+
+\draw[draw=red, dashed] (3.5, -2) rectangle ++(5.75, 4);
+\node[text=red] at (6.5, 2.25) {Electronics};
+\end{tikzpicture}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% OLD %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{tikzpicture}[node distance=3.5cm, auto]
+% % Nodes
+% \node[block, text width=8em, minimum height=12em, minimum width=8em] at (0, 0) (fpga) {Field Programmable Gate Array};
+% \node[block] at (-4, 1) (bram) {Block RAM};
+% \node[block] at (-4, -1) (adc) {Analog to digital converter};
+% \node[block, minimum height=12em] at (-8, 0) (arm) {Arm Processor};
+% \node[block] at (-8, -4) (ter) {Terminal};
+% \node[block] at (5, -4) (circuit) {Electronic Circuit};
+% \node[block] at (8, -4) (battery) {Battery};
+% \node[block] at (5, 2) (led) {LED};
+% \node[block] at (5, 0) (seg1) {Seven segment display};
+% % \node[block] at (4, -6) (seg2) {Seven segment display};
+
+% % Arrows
+% \draw[line] (-7.5, -3.225) -- (-7.5, -2.3) node[pos=0.2, right] {User input};
+% \draw[line] (-8.5, -2.3) -- (-8.5, -3.225) node[pos=0.8, left] {};
+% \draw[line] (circuit) -- (battery);
+% \draw[line] (-6.9, 1) -- (bram);
+% \draw[line] (bram) -- (-1.65, 1);
+% % \draw[line] (-1.65, -1) -- (adc);
+% \draw[line] (adc) -- (-6.9,-1);
+% \draw[line] (1.65, -2) -| (circuit) node[pos=0.8, right] {PWM};
+% \draw[line] (circuit) -| (adc) node[pos=0.1, above] {Voltage};
+% \draw[line] (1.65, 2) -- (led);
+% \draw[line] (1.65, 0) -- (seg1);
+
+% % rectangles
+% \draw[draw=red, dashed] (-9.5, -2.55) rectangle ++(11.5, 5);
+% \node[text=red] at (-4, 2.7) {PYNQ-Z2 Board};
+
+% \draw[draw=red, dashed] (3.25, -5) rectangle ++(6, 8);
+% \node[text=red] at (6.5, 3.25) {Electronics};
+% \end{tikzpicture}

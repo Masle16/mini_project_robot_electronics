@@ -1,0 +1,29 @@
+\documentclass[../report.tex]{subfiles}
+\begin{document}
+
+\section{Introduction} \label{sec:introduction}
+This report explores how to build an advanced electronic circuit that interacts with analogue and digital signals by creating a smart battery charging and monitoring system.
+
+The goal is to design a circuit that can charge batteries of different voltages, e.g. $1.5$ volt, $3$ volt, $4.5$ volt, etc., and monitor the state of charge and the remaining charging time.
+
+It is chosen to use a combination of the Processing System, PS, and Programmable Logic, PL, for the battery management. \autoref{fig:overview} shows an illustration of the desired system.
+
+\begin{figure}[H]
+    \centering
+    \noindent\makebox[\textwidth][c]{\subfile{figures/overview}}
+    \caption{Diagram of the system}
+    \label{fig:overview}
+\end{figure}
+
+In \autoref{fig:overview}, the overall system is illustrated, and the pipeline of the system is outlined below.
+\begin{enumerate}
+    \item \label{overview:step1} The battery is placed in the battery holder.
+    \item \label{overview:step2} The user enters the battery capacity, nominal voltage, rate of charge, and charging speed via terminal.
+    \item \label{overview:step3} The Arm Processor calculates an increase or decrease in Pulse-Width Modulation, PWM, duty cycle and the current battery level. This is done based upon the user inputs and the voltage from the electronic circuit, which is measured by the Analog to Digital Converter, ADC.
+    \item \label{overview:step4} The Field-Programmable Gate Array, FPGA, reads from Block Random Access Memory, BRAM, and acts upon the readings. The PWM signal is adjusted based on the value from the BRAM, describing if an increasing or decrease in PWM value is needed. Furthermore, if the battery level is above $20$ \% a Light-Emitting Diode, LED, is turned on.
+    \item \label{overview:step5} Step \ref{overview:step3} and \ref{overview:step4} is repeated until the measured battery voltage has reached the nominal voltage, which was specified by the user.
+\end{enumerate}
+
+The code for the project can be found at \cite{code}.
+
+\end{document}

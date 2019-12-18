@@ -1,0 +1,97 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{setup}
+\usepackage[utf8]{inputenc}
+\usepackage[siunitx]{circuitikz}
+\usepackage{pgfkeys}
+\usepackage{csquotes}
+\usepackage{tikz}
+\usepackage[table,xcdraw]{xcolor}
+
+\addbibresource{appendices/bibliography.bib}
+
+\raggedbottom
+\linespread{1.4}
+\graphicspath{{./figures/}{../figures/}}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+\usetikzlibrary{arrows,automata}
+
+% Define block styles
+\tikzstyle{decision} = [diamond, draw, fill=blue!20, text width=4.5em, text badly centered, node distance=3cm, inner sep=0pt]
+\tikzstyle{block} = [rectangle, draw, fill=blue!20, text width=5em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+\tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm, minimum height=2em]
+
+\lstset{
+  basicstyle=\ttfamily,
+  columns=fullflexible,
+  frame=single,
+  breaklines=true,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
+\begin{document}
+
+    \cfoot[]{ \fancyplain{}{\footnotesize} }
+    \fancyhead{}
+    
+    \subfile{titlepage}
+    \clearpage
+    
+    \setcounter{tocdepth}{2}
+    \tableofcontents
+    \clearpage
+    
+    \pagenumbering{arabic}    
+    \fancyhead[R]{\large \textlcsc{ \rightmark } }
+    \fancyhead[L]{\large \textsc{ section } \normalsize \thesection}
+    \cfoot{\thepage\ of \pageref{LastPage}}
+    
+    % Introduction
+    \subfile{tex/introduction}
+    \clearpage
+    
+    \subfile{tex/materials}
+    \clearpage
+    
+    \subfile{tex/background}
+    \clearpage
+    
+    %\subfile{tex/system_design}
+    %\clearpage
+    
+    \subfile{tex/circuit}
+    \clearpage
+    
+    \subfile{tex/monitoring}
+    \clearpage
+    
+    \subfile{tex/control}
+    \clearpage
+    
+    \subfile{tex/combined}
+    \clearpage
+    
+    %\subfile{tex/project}
+    %\clearpage
+    
+    \subfile{tex/results}
+    \clearpage
+    
+    \subfile{tex/discussion}
+    \clearpage
+    
+    \subfile{tex/conclusion}
+    \clearpage
+    
+    %\bibliography{appendices/bibliography.bib}
+    \printbibliography
+    \clearpage
+    
+    % Appendices
+    \begin{appendices}
+        \subfile{appendices/bilag}
+        \clearpage
+    \end{appendices}
+
+\end{document}

@@ -1,0 +1,23 @@
+\documentclass[../report.tex]{subfiles}
+\begin{document}
+
+\section{System Design} \label{sec:results}
+In this section the overall system design will be described.
+
+\subsection{Implementing Battery Management in Processing System and Programmable Logic}
+It is chosen to use a combination of the PS (Processing System) and PL (Programmable Logic) for the battery management.\\
+The pipeline is as follows.
+\begin{enumerate}
+    \item PS measures $i_{charge}$ and $V_{BAT}$ by utilizing an ADC on the pins $V_{ADC1}$ and $V_{ADC2}$.
+    \item PS calculates the following: if PWM should be stepped up or down, the charge time left in hours $T_{LEFT}$ and the charge state $\%_{BAT}$.
+    \item PS writes the results to the BRAM.
+    \item PL reads the values from the BRAM.
+    \item PL acts upon the readings.
+    \begin{enumerate}
+        \item Adjusts duty cycle of the PWM signal if necessary.
+        \item Controls a LED based on $\%_{BAT}$.
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
+
